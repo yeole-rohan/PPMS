@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}{% block extracss %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <form id="contact" action="" method="post">
+            {% csrf_token %}
+            <h3>Diesel Stock Form</h3>
+
+            <fieldset>
+                <input placeholder="Opening Stock" name="openStock" type="text" tabindex="1" autofocus>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Receipt Stock" name="receiptStock" type="text" tabindex="2">
+            </fieldset>
+            <fieldset>
+                <input placeholder="Actual Sale" name="actualSale" type="text" tabindex="3">
+            </fieldset>
+            <fieldset>
+                <input placeholder="Product Dip" name="productDip" type="text" tabindex="4">
+            </fieldset>
+            <fieldset>
+                <input placeholder="Actual Dip" name="actualDip" type="text" tabindex="5">
+            </fieldset>
+            <fieldset>
+                <input type="text" name="waterCm" placeholder="Water Dip in Cm" tabindex="6">
+            </fieldset>
+            <fieldset>
+                <input type="text" name="waterLtr" placeholder="Water Dip in Liters" tabindex="7">
+            </fieldset>
+            <fieldset>
+                <button name="submit" type="submit" id="contact-submit" data-submit=.Sending">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+{% endblock %}

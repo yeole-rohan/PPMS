@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extracss %}
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+{% endblock %}
+{% block content %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Diesel Nozzle Wise Sale Record
+            <small>All</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{% url 'home' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Diesel Stock Record</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"><a href="{% url 'diesel-nozzle-form' %}">Add New Record </a></h3>
+                    </div>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Opening Reading For Nozzle 1</th>
+                            <th>Sale For Nozzle 1</th>
+                            <th>Opening Reading For Nozzle 2</th>
+                            <th>Sale For Nozzle 2</th>
+                            <th>Opening Reading For Nozzle 3</th>
+                            <th>Sale For Nozzle 4</th>
+                            <th>Opening Reading For Nozzle 4</th>
+                            <th>Sale For Nozzle 4</th>
+                            <th>Rate</th>
+                            <th>Testing</th>
+                            <th>Total Amount</th>
+                            <th>Total Meter Sale</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for foo in dieselData %}
+                            <tr>
+                                <td>{{ foo.date }}</td>
+                                <td>{{ foo.openingReadingForNozzle1 }}</td>
+                                <td>{{ foo.saleForNozzle1 }}</td>
+                                <td>{{ foo.openingReadingForNozzle2 }}</td>
+                                <td>{{ foo.saleForNozzle2 }}</td>
+                                <td>{{ foo.openingReadingForNozzle3 }}</td>
+                                <td>{{ foo.saleForNozzle3 }}</td>
+                                <td>{{ foo.openingReadingForNozzle4 }}</td>
+                                <td>{{ foo.saleForNozzle4 }}</td>
+                                <td>{{ foo.rate }}</td>
+                                <td>{{ foo.testing }}</td>
+                                <td>{{ foo.totalAmount }}</td>
+                                <td>{{ foo.totalMeterSale }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

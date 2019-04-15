@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extracss %}
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <form id="contact" action="" method="post">
+            {% csrf_token %}
+            <h3>Diesel Nozzle Form</h3>
+            <fieldset>
+                <input placeholder="Opening Reading For Nozzle 1" name="openingReadingForNozzle1" type="text"
+                       tabindex="1" autofocus>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Sale For Nozzle 1" name="saleForNozzle1" type="text" tabindex="2">
+            </fieldset>
+            <fieldset>
+                <input placeholder="Opening Reading For Nozzle 2" name="openingReadingForNozzle2" type="text"
+                       tabindex="3">
+            </fieldset>
+            <fieldset>
+                <input placeholder="Sale For Nozzle 2" name="saleForNozzle2" type="text" tabindex="4">
+            </fieldset>
+            <fieldset>
+                <input placeholder="Opening Reading For Nozzle 3" name="openingReadingForNozzle3" type="text"
+                       tabindex="5" autofocus>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Sale For Nozzle 3" name="saleForNozzle3" type="text" tabindex="6">
+            </fieldset>
+            <fieldset>
+                <input placeholder="Opening Reading For Nozzle 4" name="openingReadingForNozzle4" type="text"
+                       tabindex="7">
+            </fieldset>
+            <fieldset>
+                <input placeholder="Sale For Nozzle 4" name="saleForNozzle4" type="text" tabindex="8">
+            </fieldset>
+             <fieldset>
+                <input placeholder="Rate for Diesel" name="rate" type="text" tabindex="9">
+            </fieldset>
+             <fieldset>
+                <input placeholder="Pump Testing" name="testing" type="text" tabindex="10">
+            </fieldset>
+            <fieldset>
+                <button name="submit" type="submit" id="contact-submit" data-submit=.Sending">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+{% endblock %}

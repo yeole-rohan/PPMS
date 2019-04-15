@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extracss %}
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+{% endblock %}
+{% block content %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Petrol Density Record
+            <small>All</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{% url 'home' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Petrol Density Record</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"><a href="{% url 'petrol-density-form' %}">Add Record</a></h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="example2" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Morning Observed Hydro Density</th>
+                                <th>Morning Observed Temperature Density</th>
+                                <th>Morning Density</th>
+                                <th>Receipts Invoice Number</th>
+                                <th>Receipts Quantity</th>
+                                <th>Receipts Observed Hydro Density</th>
+                                <th>Receipts Observed Temperature Density</th>
+                                <th>Receipts Density</th>
+                                <th>As Per Challan Density</th>
+                                <th>Decantation Observed Hydro Density</th>
+                                <th>Decantation Observed Temperature Density</th>
+                                <th>Decantation Density</th>
+                                <th>Density Difference</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for foo in density %}
+                                <tr>
+                                    <td>{{ foo.date }}</td>
+                                    <td>{{ foo.morningObservedHydroDensity }}</td>
+                                    <td>{{ foo.morningObservedTemperatureDensity }}</td>
+                                    <td>{{ foo.morningDensity }}</td>
+                                    <td>{{ foo.receiptsInvoiceNumber }}</td>
+                                    <td>{{ foo.receiptsQuantity }}</td>
+                                    <td>{{ foo.receiptsObservedHydroDensity }}</td>
+                                    <td>{{ foo.receiptsObservedTemperatureDensity }}</td>
+                                    <td>{{ foo.receiptsDensity }}</td>
+                                    <td>{{ foo.asPerChallanDensity }}</td>
+                                    <td>{{ foo.decantationObservedHydroDensity }}</td>
+                                    <td>{{ foo.decantationObservedTemperatureDensity }}</td>
+                                    <td>{{ foo.decantationDensity }}</td>
+                                    <td>{{ foo.densityDifference }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

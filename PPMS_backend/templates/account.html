@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extracss %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dataTables.bootstrap.min.css' %}">
+{% endblock %}
+{% block content %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Account Record
+            <small>All</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{% url 'home' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Account Record</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"><a href="{% url 'account-form' %}">Add Record</a></h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="example2" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Amount Paid</th>
+                                <th>Amount Remain To paid</th>
+                                <th>Cheque/Demand No</th>
+                                <th>Diesel Quantity</th>
+                                <th>Invoice Amount</th>
+                                <th>Lubricant Quantity</th>
+                                <th>Petrol Quantity</th>
+                                <th>Payment Date</th>
+                                <th>Short/Excess</th>
+                                <th>Comment</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for foo in account %}
+                                <tr>
+                                    <td>{{ foo.date }}</td>
+                                    <td>{{ foo.amountPaid }}</td>
+                                    <td>{{ foo.amountRemainPaid }}</td>
+                                    <td>{{ foo.cheque_demand_number }}</td>
+                                    <td>{{ foo.dieselQuantity }}</td>
+                                    <td>{{ foo.invoiceAmount }}</td>
+                                    <td>{{ foo.lubricantQuantity }}</td>
+                                    <td>{{ foo.petrolQuantity }}</td>
+                                    <td>{{ foo.paymentDate }}</td>
+                                    <td>{{ foo.shortExcess }}</td>
+                                    <td>{{ foo.comment }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+<script>
+    $(function () {
+        $('#example2').DataTable({
+            'paging': true,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
+        })
+    })
+</script>
+

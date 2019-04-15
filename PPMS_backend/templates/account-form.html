@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extracss %}
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <form id="contact" action="" method="post">
+            {% csrf_token %}
+            <h3>Account Form</h3>
+
+            <fieldset>
+                <input placeholder="Invoice Number" name="invoiceNumber" type="text" tabindex="1" autofocus>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Petrol Quantity" name="petrolQuantity" type="text" tabindex="2">
+            </fieldset>
+            <fieldset>
+                <input placeholder="Diesel Quantity" name="dieselQuantity" type="text" tabindex="3">
+            </fieldset>
+            <fieldset>
+                <input placeholder="Lubricant Quantity" name="lubricantQuantity" type="text" tabindex="4">
+            </fieldset>
+            <fieldset>
+                <input placeholder="Invoice Amount" name="invoiceAount" type="text" tabindex="5">
+            </fieldset>
+            <fieldset>
+                <input type="text" name="payNumber" placeholder="Cheque/Demand draft Number" tabindex="6">
+            </fieldset>
+            <fieldset>
+                <p>Payment Date</p>
+                <input type="date" name="paymentDate" tabindex="7">
+            </fieldset>
+            <fieldset>
+                <input type="text" name="amountPaid" placeholder="Amount Paid" tabindex="8">
+            </fieldset>
+            <fieldset>
+                <input type="text" name="comment" tabindex="9" placeholder="Comment if any">
+            </fieldset>
+            <fieldset>
+                <input type="text" name="shortExcess" placeholder="Short/Excess any" tabindex="10">
+            </fieldset>
+            <fieldset>
+                <button name="submit" type="submit" id="contact-submit" data-submit=.Sending">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+{% endblock %}

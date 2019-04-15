@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}{% block extracss %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Petrol Stock Record
+            <small>All</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{% url 'home' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Petrol Stock Record</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"><a href="{% url 'petrol-stock-form' %}">Add Record</a></h3>
+                    </div>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Opening Stock</th>
+                            <th>Closing Stock</th>
+                            <th>Total Stock</th>
+                            <th>Actual Sale</th>
+                            <th>Actual Dip</th>
+                            <th>Product Dip</th>
+                            <th>Receipt Stock</th>
+                            <th>Variation</th>
+                            <th>Water in Cm</th>
+                            <th>Water in Liters</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for foo in stock %}
+                            <tr>
+                                <td>{{ foo.date }}</td>
+                                <td>{{ foo.openingStock }}</td>
+                                <td>{{ foo.closingStock }}</td>
+                                <td>{{ foo.totalStock }}</td>
+                                <td>{{ foo.actualSale }}</td>
+                                <td>{{ foo.actualDip }}</td>
+                                <td>{{ foo.productDip }}</td>
+                                <td>{{ foo.receiptStock }}</td>
+                                <td>{{ foo.variations }}</td>
+                                <td>{{ foo.waterCm }}</td>
+                                <td>{{ foo.waterLtrs }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
