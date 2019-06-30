@@ -9,54 +9,54 @@
             {% csrf_token %}
             <h3>Petrol Density Form</h3>
             <fieldset>
-                <input placeholder="Morning Observed Hydro Density" name="morningObservedHydroDensity" type="text"
+                <input placeholder="Morning Observed Hydro Density" required name="morningObservedHydroDensity" type="text"
                        tabindex="1" autofocus>
             </fieldset>
             <fieldset>
                 <input placeholder="Morning Observed Temperature Density" name="morningObservedTemperatureDensity"
-                       type="text" tabindex="2">
+                       type="text" tabindex="2"required>
             </fieldset>
             <fieldset>
-                <input placeholder="Morning Density at 15 &#176;C" name="morningDensity" type="text"
-                       tabindex="3">
+                <input placeholder="Morning Density at 15 &#176;C" step="0.01" min="0" max="1000"  name="morningDensity" type="text"
+                       tabindex="3" required>
             </fieldset>
             <fieldset>
-                <input placeholder="Receipts Invoice Number" name="receiptsInvoiceNumber" type="text" tabindex="4">
+                <input placeholder="Receipts Invoice Number" name="receiptsInvoiceNumber" type="text" tabindex="4" required>
             </fieldset>
             <fieldset>
                 <input placeholder="Receipts Quantity" name="receiptsQuantity" type="text"
-                       tabindex="5" autofocus>
+                       tabindex="5" required>
             </fieldset>
             <fieldset>
                 <input placeholder="Receipts Observed Hydro Density" name="receiptsObservedHydroDensity" type="text"
-                       tabindex="6">
+                       tabindex="6" required>
             </fieldset>
             <fieldset>
                 <input placeholder="Receipts Observed Temperature Density" name="receiptsObservedTemperatureDensity"
                        type="text"
-                       tabindex="7">
+                       tabindex="7" required>
             </fieldset>
             <fieldset>
-                <input placeholder="Receipts Density at 15 &#176;C" name="receiptsDensity" type="text" tabindex="8">
+                <input placeholder="Receipts Density at 15 &#176;C" step="0.01" min="0" max="1000" required name="receiptsDensity" type="text" tabindex="8">
             </fieldset>
             <fieldset>
-                <input placeholder="As Per Challan Density at &#176;C" name="asPerChallanDensity" type="text"
-                       tabindex="9">
+                <input placeholder="As Per Challan Density at &#176;C" step="0.01" min="0" max="1000" required name="asPerChallanDensity" type="text"
+                       tabindex="9" required>
             </fieldset>
             <fieldset>
                 <input placeholder="Decantation Observed Hydro Density" name="decantationObservedHydroDensity"
-                       type="text" tabindex="10">
+                       type="text" tabindex="10"required>
             </fieldset>
             <fieldset>
                 <input type="text" placeholder="Decantation Observed Temperature Density"
-                       name="decantationObservedTemperatureDensity" tabindex="11">
+                       name="decantationObservedTemperatureDensity" tabindex="11" required>
             </fieldset>
             <fieldset>
                 <input type="text" placeholder="Decantation Density at 15 &#176;C" name="decantationDensity"
-                       tabindex="12">
+                       tabindex="12" required>
             </fieldset>
             <fieldset>
-                <button name="submit" type="submit" id="contact-submit" data-submit=.Sending">Submit</button>
+                <button name="submit" type="submit" id="contact-submit" data-submit="Sending">Submit</button>
             </fieldset>
         </form>
     </div>
