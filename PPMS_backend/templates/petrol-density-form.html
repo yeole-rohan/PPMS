@@ -4,6 +4,20 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}
 {% block content %}
+ <!-- Content Header (Page header) -->
+ <div class="head-holder">
+ <section class="content-header">
+    <h1>
+        Petrol Density Record
+        <small>All</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="{% url 'home' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{% url 'petrol-density' %}">Petrol Density Record</a></li>
+        <li class="active">Petrol Density Form</li>
+    </ol>
+</section>
+</div>
     <div class="container">
         <form id="contact" action="" method="post">
             {% csrf_token %}

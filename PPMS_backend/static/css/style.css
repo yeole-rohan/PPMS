@@ -154,3 +154,29 @@ fieldset {
 .skin-blue .main-header .navbar .sidebar-toggle:hover {
     height: 50px;
 }
+.head-holder{
+    border-bottom: 2px solid #b7bdc0;
+    margin: 0 0;
+    padding: 0 0 20px 0;
+}
+.add-record{
+    border: 1px solid purple;
+    line-height: 33px;
+    display: block;
+    position: relative;
+    color: white;
+    padding: 0 10px;
+    border-radius: 7px;
+    background: #800080c9;
+    overflow: hidden;
+}
+.add-record:hover{
+    color: purple;
+    background: white;
+}
+.head-holder h2{
+    text-align: center;
+}
+.box-header>.fa, .box-header>.glyphicon, .box-header>.ion, .box-header .box-title{
+    font-size: 13px;
+}

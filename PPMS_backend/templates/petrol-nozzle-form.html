@@ -4,6 +4,19 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}
 {% block content %}
+<div class="head-holder">
+    <section class="content-header">
+        <h1>
+            Petrol Nozzle Wise Sale Record
+            <small>All</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{% url 'home' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="{% url 'petrol-nozzle' %}">Petrol Nozzal Record</a> </li>
+            <li class="active">Petrol Nozzal Form</li>
+        </ol>
+    </section>
+</div>
     <div class="container">
         <form id="contact" action="" method="post">
             {% csrf_token %}

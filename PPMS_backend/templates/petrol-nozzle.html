@@ -5,6 +5,7 @@
 {% endblock %}
 {% block content %}
     <!-- Content Header (Page header) -->
+    <div class="head-holder">
     <section class="content-header">
         <h1>
             Petrol Nozzle Wise Sale Record
@@ -12,15 +13,16 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{% url 'home' %}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Petrol Stock Record</li>
+            <li class="active">Petrol Nozzal Record</li>
         </ol>
     </section>
+    </div>
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title"><a href="{% url 'petrol-nozzle-form' %}">Add New Record </a></h3>
+                        <h3 class="box-title"><a href="{% url 'petrol-nozzle-form' %}"class="add-record">Add New Record </a></h3>
                     </div>
                     <table class="table table-bordered">
                         <thead>

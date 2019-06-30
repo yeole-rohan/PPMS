@@ -3,6 +3,19 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
 {% endblock %}
 {% block content %}
+<div class="head-holder">
+    <section class="content-header">
+        <h1>
+            Diesel Stock Record
+            <small>All</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{% url 'home' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="{% url 'diesel' %}" >Diesel Stock Record</a></li>
+            <li class="active">Diesel Stock Form</li>
+        </ol>
+    </section>
+</div>
     <div class="container">
         <form id="contact" action="" method="post">
             {% csrf_token %}

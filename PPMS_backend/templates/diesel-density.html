@@ -5,6 +5,7 @@
 {% endblock %}
 {% block content %}
     <!-- Content Header (Page header) -->
+    <div class="head-holder">
     <section class="content-header">
         <h1>
             Diesel Density Record
@@ -15,12 +16,13 @@
             <li class="active">Diesel Density Record</li>
         </ol>
     </section>
+    </div>
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title"><a href="{% url 'diesel-density-form' %}">Add Record</a></h3>
+                        <h3 class="box-title"><a href="{% url 'diesel-density-form' %}"class="add-record">Add Record</a></h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">

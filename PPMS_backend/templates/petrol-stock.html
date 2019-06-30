@@ -4,6 +4,7 @@
 {% endblock %}
 {% block content %}
     <!-- Content Header (Page header) -->
+    <div class="head-holder">
     <section class="content-header">
         <h1>
             Petrol Stock Record
@@ -14,12 +15,13 @@
             <li class="active">Petrol Stock Record</li>
         </ol>
     </section>
+    </div>
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title"><a href="{% url 'petrol-stock-form' %}">Add Record</a></h3>
+                        <h3 class="box-title"><a href="{% url 'petrol-stock-form' %}" class="add-record">Add Record</a></h3>
                     </div>
                     <table class="table table-bordered">
                         <thead>
