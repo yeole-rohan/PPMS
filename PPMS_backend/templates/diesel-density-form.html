@@ -9,51 +9,51 @@
             {% csrf_token %}
             <h3>Diesel Density Form</h3>
             <fieldset>
-                <input placeholder="Morning Observed Hydro Density" name="morningObservedHydroDensity" type="text"
-                       tabindex="1" autofocus>
+                <input placeholder="Morning Observed Hydro Density" name="morningObservedHydroDensity" type="number"
+                       tabindex="1" autofocus required >
             </fieldset>
             <fieldset>
                 <input placeholder="Morning Observed Temperature Density" name="morningObservedTemperatureDensity"
-                       type="text" tabindex="2">
+                       type="number" tabindex="2" required>
             </fieldset>
             <fieldset>
-                <input placeholder="Morning Density at 15 &#176;C" name="morningDensity" type="text"
-                       tabindex="3">
+                <input placeholder="Morning Density at 15 &#176;C" name="morningDensity" type="number"
+                       tabindex="3"step="0.01" min="0" max="1000" required>
             </fieldset>
             <fieldset>
-                <input placeholder="Receipts Invoice Number" name="receiptsInvoiceNumber" type="text" tabindex="4">
+                <input placeholder="Receipts Invoice Number" name="receiptsInvoiceNumber" type="number" tabindex="4" required>
             </fieldset>
             <fieldset>
-                <input placeholder="Receipts Quantity" name="receiptsQuantity" type="text"
-                       tabindex="5" autofocus>
+                <input placeholder="Receipts Quantity" name="receiptsQuantity" type="number"
+                       tabindex="5" required>
             </fieldset>
             <fieldset>
-                <input placeholder="Receipts Observed Hydro Density" name="receiptsObservedHydroDensity" type="text"
-                       tabindex="6">
+                <input placeholder="Receipts Observed Hydro Density" name="receiptsObservedHydroDensity" type="number"
+                       tabindex="6" required>
             </fieldset>
             <fieldset>
                 <input placeholder="Receipts Observed Temperature Density" name="receiptsObservedTemperatureDensity"
-                       type="text"
-                       tabindex="7">
+                       type="number"
+                       tabindex="7" required>
             </fieldset>
             <fieldset>
-                <input placeholder="Receipts Density at 15 &#176;C" name="receiptsDensity" type="text" tabindex="8">
+                <input placeholder="Receipts Density at 15 &#176;C" name="receiptsDensity" step="0.01" min="0" max="10000"  type="number" tabindex="8" required>
             </fieldset>
             <fieldset>
-                <input placeholder="As Per Challan Density at &#176;C" name="asPerChallanDensity" type="text"
-                       tabindex="9">
+                <input placeholder="As Per Challan Density at &#176;C" name="asPerChallanDensity" type="number"
+                       tabindex="9"step="0.01" min="0" max="10000" required>
             </fieldset>
             <fieldset>
                 <input placeholder="Decantation Observed Hydro Density" name="decantationObservedHydroDensity"
-                       type="text" tabindex="10">
+                       type="number" tabindex="10" required step="0.01" min="0" max="10000">
             </fieldset>
             <fieldset>
-                <input type="text" placeholder="Decantation Observed Temperature Density"
-                       name="decantationObservedTemperatureDensity" tabindex="11">
+                <input type="number" placeholder="Decantation Observed Temperature Density"
+                       name="decantationObservedTemperatureDensity" tabindex="11" required>
             </fieldset>
             <fieldset>
-                <input type="text" placeholder="Decantation Density at 15 &#176;C" name="decantationDensity"
-                       tabindex="12">
+                <input type="number" placeholder="Decantation Density at 15 &#176;C" name="decantationDensity"
+                       tabindex="12" required>
             </fieldset>
             <fieldset>
                 <button name="submit" type="submit" id="contact-submit" data-submit=.Sending">Submit</button>

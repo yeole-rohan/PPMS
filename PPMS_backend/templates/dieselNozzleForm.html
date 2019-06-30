@@ -9,38 +9,38 @@
             {% csrf_token %}
             <h3>Diesel Nozzle Form</h3>
             <fieldset>
-                <input placeholder="Opening Reading For Nozzle 1" name="openingReadingForNozzle1" type="text"
-                       tabindex="1" autofocus>
+                <input placeholder="Opening Reading For Nozzle 1" step="0.01" min="0" max="10000" name="openingReadingForNozzle1" type="number"
+                       tabindex="1" autofocus required>
             </fieldset>
             <fieldset>
-                <input placeholder="Sale For Nozzle 1" name="saleForNozzle1" type="text" tabindex="2">
+                <input placeholder="Sale For Nozzle 1"step="0.01" min="0" max="10000" name="saleForNozzle1" type="number" tabindex="2" required>
             </fieldset>
             <fieldset>
-                <input placeholder="Opening Reading For Nozzle 2" name="openingReadingForNozzle2" type="text"
-                       tabindex="3">
+                <input placeholder="Opening Reading For Nozzle 2"step="0.01" min="0" max="10000" name="openingReadingForNozzle2" type="number"
+                       tabindex="3" required>
             </fieldset>
             <fieldset>
-                <input placeholder="Sale For Nozzle 2" name="saleForNozzle2" type="text" tabindex="4">
+                <input placeholder="Sale For Nozzle 2"step="0.01" min="0" max="10000" name="saleForNozzle2" type="number" tabindex="4" required>
             </fieldset>
             <fieldset>
-                <input placeholder="Opening Reading For Nozzle 3" name="openingReadingForNozzle3" type="text"
-                       tabindex="5" autofocus>
+                <input placeholder="Opening Reading For Nozzle 3" step="0.01" min="0" max="10000" name="openingReadingForNozzle3" type="number"
+                       tabindex="5" required>
             </fieldset>
             <fieldset>
-                <input placeholder="Sale For Nozzle 3" name="saleForNozzle3" type="text" tabindex="6">
+                <input placeholder="Sale For Nozzle 3" name="saleForNozzle3" step="0.01" min="0" max="10000" type="number" tabindex="6" required>
             </fieldset>
             <fieldset>
-                <input placeholder="Opening Reading For Nozzle 4" name="openingReadingForNozzle4" type="text"
-                       tabindex="7">
+                <input placeholder="Opening Reading For Nozzle 4"step="0.01" min="0" max="10000" name="openingReadingForNozzle4" type="number"
+                       tabindex="7"required>
             </fieldset>
             <fieldset>
-                <input placeholder="Sale For Nozzle 4" name="saleForNozzle4" type="text" tabindex="8">
+                <input placeholder="Sale For Nozzle 4" name="saleForNozzle4"step="0.01" min="0" max="10000" type="number" tabindex="8"required>
             </fieldset>
              <fieldset>
-                <input placeholder="Rate for Diesel" name="rate" type="text" tabindex="9">
+                <input placeholder="Rate for Diesel" name="rate" step="0.01" min="0" max="10000" type="number" tabindex="9"required>
             </fieldset>
              <fieldset>
-                <input placeholder="Pump Testing" name="testing" type="text" tabindex="10">
+                <input placeholder="Pump Testing" name="testing" type="number" tabindex="10"required>
             </fieldset>
             <fieldset>
                 <button name="submit" type="submit" id="contact-submit" data-submit=.Sending">Submit</button>
