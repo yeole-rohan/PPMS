@@ -248,8 +248,6 @@ line_chart_json = LineCHartJSONView.as_view()
 
 
 def get_dta(request):
-    stock = PetrolStock.objects.all()
-    print(stock)
     data = {
         "defaultDatas":[100,121,142,241,241,223],
         "labels":['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
