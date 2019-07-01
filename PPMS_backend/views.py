@@ -1,5 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import Account, DieselStock, DieselNozzle, DieselDensity, PetrolDensity, PetrolNozzle, PetrolStock
+from random import randint
+from django.views.generic import TemplateView
+from chartjs.views.lines import BaseLineChartView
+from django.http import JsonResponse
 
 
 # Create your views here.
@@ -224,3 +228,31 @@ def petrolDensityForm(request):
         petrolDensities.save()
         return redirect(petrolDensity)
     return render(request, 'petrol-density-form.html')
+
+
+class LineCHartJSONView(BaseLineChartView):
+    def get_labels(self):
+        return ["January", "February", "March", "April", "May", "June", "July"]
+        
+    def get_providers(self):
+        return ["Central", "Eastside", "Westside"]
+
+    def get_data(self):
+        return [[75, 44, 92, 11, 44, 95, 35],
+                [41, 92, 18, 3, 73, 87, 92],
+                [87, 21, 94, 3, 90, 13, 65]]
+
+line_chart = TemplateView.as_view(template_name = 'index.html')
+line_chart_json = LineCHartJSONView.as_view()
+
+
+
+def get_dta(request):
+    stock = PetrolStock.objects.all()
+    print(stock)
+    data = {
+        "defaultDatas":[100,121,142,241,241,223],
+        "labels":['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        
+    }
+    return JsonResponse(data)
