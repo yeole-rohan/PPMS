@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from .models import Account, DieselStock, DieselNozzle, DieselDensity, PetrolDensity, PetrolNozzle, PetrolStock
 from random import randint
 from django.views.generic import TemplateView
@@ -195,7 +195,7 @@ def petrolStockForm(request):
             waterCm=watertCm, waterLtrs=waterLtrs)
         petrol.save()
         return redirect(petrolStock)
-    return render(request, 'petrol-stock-form.html')
+    return render(request, 'petrol-stock-form.html',{})
 
 
 def petrolDensityForm(request):
@@ -228,23 +228,6 @@ def petrolDensityForm(request):
         petrolDensities.save()
         return redirect(petrolDensity)
     return render(request, 'petrol-density-form.html')
-
-
-class LineCHartJSONView(BaseLineChartView):
-    def get_labels(self):
-        return ["January", "February", "March", "April", "May", "June", "July"]
-        
-    def get_providers(self):
-        return ["Central", "Eastside", "Westside"]
-
-    def get_data(self):
-        return [[75, 44, 92, 11, 44, 95, 35],
-                [41, 92, 18, 3, 73, 87, 92],
-                [87, 21, 94, 3, 90, 13, 65]]
-
-line_chart = TemplateView.as_view(template_name = 'index.html')
-line_chart_json = LineCHartJSONView.as_view()
-
 
 
 def get_dta(request):
