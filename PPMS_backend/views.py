@@ -231,9 +231,27 @@ def petrolDensityForm(request):
 
 
 def get_dta(request):
+    dates = []
+    totalAmount = []
+    nozz = PetrolNozzle.objects.all()
+    for dataset in nozz:
+        dates.append(dataset.date)
+        totalAmount.append(dataset.totalAmount)
     data = {
-        "defaultDatas":[100,121,142,241,241,223],
-        "labels":['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        
+        "defaultDatas":totalAmount,
+        "labels": dates,   
+    }
+    return JsonResponse(data)
+
+def getDieselProfit(request):
+    date = []
+    totalAmount= []
+    diesel = DieselNozzle.objects.all()
+    for datas in diesel:
+        date.append(datas.date)
+        totalAmount.append(datas.totalAmount)
+    data = {
+        "date":date,
+        "amount":totalAmount,
     }
     return JsonResponse(data)

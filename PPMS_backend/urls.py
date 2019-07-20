@@ -19,5 +19,7 @@ urlpatterns = [
     path('petrol-stock-form/', views.petrolStockForm, name="petrol-stock-form"),
     path('petrol-nozzle/', views.petrolNozzle, name="petrol-nozzle"),
     path('petrol-nozzle-form/', views.petrolNozzleForm, name="petrol-nozzle-form"),
-    path('api/res/', views.get_dta,name="api-data")
+    path('api/res/petrol-profit', views.get_dta ,name="api-data"),
+    path('api/res/diesel-profit', views.getDieselProfit ,name="api-datas")
+
 ]
