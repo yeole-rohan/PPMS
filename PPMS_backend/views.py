@@ -4,6 +4,7 @@ from random import randint
 from django.views.generic import TemplateView
 from chartjs.views.lines import BaseLineChartView
 from django.http import JsonResponse
+# from datetime import datetime
 
 
 # Create your views here.
@@ -253,5 +254,20 @@ def getDieselProfit(request):
     data = {
         "date":date,
         "amount":totalAmount,
+    }
+    print(JsonResponse(data))
+    return JsonResponse(data)
+def getPetrolSale(request):
+    month = []
+    totalSales = []
+    petrolSale = PetrolNozzle.objects.all()
+    for alls in petrolSale:
+        print(alls.totalMeterSale)
+        month.append(alls.date)
+        totalSales.append(alls.totalMeterSale)
+        print(totalSales)
+    data = {
+        'month':month,
+        'totalSale':totalSales
     }
     return JsonResponse(data)
