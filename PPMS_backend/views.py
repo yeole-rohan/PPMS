@@ -4,11 +4,23 @@ from random import randint
 from django.views.generic import TemplateView
 from chartjs.views.lines import BaseLineChartView
 from django.http import JsonResponse
+import requests
 # from datetime import datetime
 
 
 # Create your views here.
 def home(request):
+    # response = requests.get("https://fuelprice.p.rapidapi.com/beta",
+    # headers={
+    # "X-RapidAPI-Host": "fuelprice.p.rapidapi.com",
+    # "X-RapidAPI-Key": "0ac878f7damsha34523367ef1038p18de5cjsnbd6187a88519",
+    # "Content-Type": "application/json",
+    # "Accept": "application/json"
+    # },
+    # params=("{\"fuel\":\"p\",\"state\":\"dl\"}")
+    # )
+    # res = response.json()
+    # print(res)
     return render(request, 'index.html')
 
 
