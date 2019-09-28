@@ -1,121 +1,125 @@
-var endpoint = '/api/res/petrol-profit'
-var defaultData = []
-var labels = []
-$.ajax({
-    methos:"GET",
-    url:endpoint,
-    success:function(data){
-        labels = data.labels
-        defaultData = data.defaultDatas
-            var ctx = document.getElementById('myChart1').getContext('2d');
-                var myChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: labels ,
-                        datasets: [{
-                            label: 'Sale Per Day For Petrol in Rupees',
-                            data: defaultData,
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }]
-                        }
-                    }
-                });
-    },
-    error:function(error){
-        console.log("error")
-        console.log(error)
-    }
-});
-
-
-var endPoint = 'api/res/diesel-profit'
-var totalAmount = []
-var labels = []
-$.ajax({
-    methos:"GET",
-    url:endPoint,
-    success:function(data){
-        labels = data.date
-        defaultData = data.amount
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels ,
-                datasets: [{
-                    label: 'Sale Per Day For Diesel in Rupees',
-                    data: defaultData,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
+function petrolAPI() {
+    let petrolEndpoint = '/api/res/petrol-profit';
+    let petrolDefaultData = [];
+    let labels = [];
+    $.ajax({
+        methos: "GET",
+        url: petrolEndpoint,
+        success: function (data) {
+            labels = data.labels;
+            petrolDefaultData = data.pefaultDatas;
+            let ctx = document.getElementById('myChart1').getContext('2d');
+            let myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Sale Per Day For Petrol in Rupees',
+                        data: petrolDefaultData,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
                     }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
                 }
-            }
-        });
-    },
-    error:function(error){
-        console.log("error")
-        console.log(error)
-    }
-});
+            });
+        },
+        error: function (error) {
+            console.log("error");
+            console.log(error)
+        }
+    });
+}
 
-var endpoint = '/api/res/petrol-month-sale'
-var defaultData = []
-var months = []
+function dieselApi() {
+    let dieselEndPoint = 'api/res/diesel-profit';
+    let totalAmount = [];
+    let dieselLabels = [];
+    $.ajax({
+        methos: "GET",
+        url: dieselEndPoint,
+        success: function (data) {
+            labels = data.date;
+            defaultData = data.amount;
+            let ctx = document.getElementById('myChart').getContext('2d');
+            let myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: dieselLabels,
+                    datasets: [{
+                        label: 'Sale Per Day For Diesel in Rupees',
+                        data: defaultData,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        },
+        error: function (error) {
+            console.log("error");
+            console.log(error)
+        }
+    });
+}
+
+function mothAPi() {
+    let endpoint = '/api/res/petrol-month-sale';
+    let defaultData = [];
+    let months = [];
 $.ajax({
-    methos:"GET",
-    url:endpoint,
-    success:function(data){
-        months = data.month
-        defaultData = data.totalSale
-        var ctx = document.getElementById('lineChart').getContext("2d");
-        var myChart = new Chart(ctx, {
+    methos: "GET",
+    url: endpoint,
+    success: function (data) {
+        months = data.month;
+        defaultData = data.totalSale;
+        let ctx = document.getElementById('lineChart').getContext("2d");
+        let myChart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: months,
@@ -167,4 +171,6 @@ $.ajax({
                 }
             }
         });
-    }})
+    }
+});
+}

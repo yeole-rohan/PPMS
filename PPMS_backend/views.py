@@ -1,10 +1,9 @@
-from django.shortcuts import render, redirect, render_to_response
-from .models import Account, DieselStock, DieselNozzle, DieselDensity, PetrolDensity, PetrolNozzle, PetrolStock
-from random import randint
-from django.views.generic import TemplateView
-from chartjs.views.lines import BaseLineChartView
 from django.http import JsonResponse
-import requests
+from django.shortcuts import render, redirect
+
+from .models import Account, DieselStock, DieselNozzle, DieselDensity, PetrolDensity, PetrolNozzle, PetrolStock
+
+
 # from datetime import datetime
 
 
@@ -267,17 +266,14 @@ def getDieselProfit(request):
         "date":date,
         "amount":totalAmount,
     }
-    print(JsonResponse(data))
     return JsonResponse(data)
 def getPetrolSale(request):
     month = []
     totalSales = []
     petrolSale = PetrolNozzle.objects.all()
     for alls in petrolSale:
-        print(alls.totalMeterSale)
         month.append(alls.date)
         totalSales.append(alls.totalMeterSale)
-        print(totalSales)
     data = {
         'month':month,
         'totalSale':totalSales

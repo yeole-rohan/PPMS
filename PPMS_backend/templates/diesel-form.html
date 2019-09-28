@@ -28,13 +28,15 @@
                 <input placeholder="Receipt Stock" name="receiptStock" type="number" tabindex="2"required>
             </fieldset>
             <fieldset>
-                <input placeholder="Actual Sale" name="actualSale" type="number" tabindex="3"required>
+                <input placeholder="Actual Sale" name="actualSale" step="0.01" min="0" max="10000" type="number"
+                       tabindex="3" required>
             </fieldset>
             <fieldset>
                 <input placeholder="Product Dip"step="0.01" min="0" max="10000" name="productDip" type="number" tabindex="4"required>
             </fieldset>
             <fieldset>
-                <input placeholder="Actual Dip"step="0.01" min="0" max="10000" name="actualDip" type="number" tabindex="5"required>
+                <input placeholder="Actual Dip" step="0.01" min="0" max="100000" name="actualDip" type="number"
+                       tabindex="5" required>
             </fieldset>
             <fieldset>
                 <input type="number" name="waterCm" placeholder="Water Dip in Cm" tabindex="6"required>
