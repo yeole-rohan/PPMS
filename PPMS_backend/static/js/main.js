@@ -1,13 +1,14 @@
+console.log("From js")
 function petrolAPI() {
     let petrolEndpoint = '/api/res/petrol-profit';
     let petrolDefaultData = [];
     let labels = [];
     $.ajax({
-        methos: "GET",
+        methods: "GET",
         url: petrolEndpoint,
         success: function (data) {
             labels = data.labels;
-            petrolDefaultData = data.pefaultDatas;
+            petrolDefaultData = data.defaultDatas;
             let ctx = document.getElementById('myChart1').getContext('2d');
             let myChart = new Chart(ctx, {
                 type: 'bar',
@@ -52,13 +53,13 @@ function petrolAPI() {
         }
     });
 }
-
+petrolAPI();
 function dieselApi() {
     let dieselEndPoint = 'api/res/diesel-profit';
     let totalAmount = [];
     let dieselLabels = [];
     $.ajax({
-        methos: "GET",
+        methods: "GET",
         url: dieselEndPoint,
         success: function (data) {
             labels = data.date;
@@ -107,7 +108,7 @@ function dieselApi() {
         }
     });
 }
-
+dieselApi();
 function mothAPi() {
     let endpoint = '/api/res/petrol-month-sale';
     let defaultData = [];
@@ -174,3 +175,4 @@ $.ajax({
     }
 });
 }
+mothAPi();

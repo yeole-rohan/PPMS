@@ -1,6 +1,8 @@
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User as user
+from django.shortcuts import get_object_or_404
 from .models import Account, DieselStock, DieselNozzle, DieselDensity, PetrolDensity, PetrolNozzle, PetrolStock
 
 
@@ -20,14 +22,18 @@ def home(request):
     # )
     # res = response.json()
     # print(res)
-    return render(request, 'index.html')
+    username = {
+            'username':request.user.get_username()
+            if request.user.is_authenticated else []
+        }
+    return render(request, 'index.html', username)
 
-
+@login_required
 def accountForm(request):
     student_list = Account.objects.all()
     return render(request, 'account.html', {'account': student_list})
 
-
+@login_required
 def account(request):
     if request.method == 'POST':
         invoiceNumber = request.POST['invoiceNumber']
@@ -51,22 +57,22 @@ def account(request):
 
 
 # Diesel Views Handle over here
-
+@login_required
 def dieselStock(request):
     diesel = DieselStock.objects.all()
     return render(request, 'diesel.html', {'diesel': diesel})
 
-
+@login_required
 def dieselNozzle(request):
     dieselData = DieselNozzle.objects.all()
     return render(request, 'diesel-nozzle.html', {'dieselData': dieselData})
 
-
+@login_required
 def dieselDensity(request):
     density = DieselDensity.objects.all()
     return render(request, 'diesel-density.html', {'density': density})
 
-
+@login_required
 def dieselNozzleForm(request):
     if request.method == 'POST':
         openingReadingForNozzle1 = request.POST['openingReadingForNozzle1']
@@ -92,7 +98,7 @@ def dieselNozzleForm(request):
         return redirect(dieselNozzle)
     return render(request, 'dieselNozzleForm.html')
 
-
+@login_required
 def dieselForm(request):
     if request.method == 'POST':
         openingStock = request.POST['openStock']
@@ -113,7 +119,7 @@ def dieselForm(request):
         return redirect(dieselStock)
     return render(request, 'diesel-form.html')
 
-
+@login_required
 def dieselDensityForm(request):
     if request.method == 'POST':
         morningObservedHydroDensity = request.POST['morningObservedHydroDensity']
@@ -147,22 +153,22 @@ def dieselDensityForm(request):
 
 
 # Petrol Views will handled here
-
+@login_required
 def petrolDensity(request):
     density = PetrolDensity.objects.all()
     return render(request, 'petrol-density.html', {'density': density})
 
-
+@login_required
 def petrolNozzle(request):
     nozzle = PetrolNozzle.objects.all()
     return render(request, 'petrol-nozzle.html', {'nozzle': nozzle})
 
-
+@login_required
 def petrolStock(request):
     stock = PetrolStock.objects.all()
     return render(request, 'petrol-stock.html', {'stock': stock})
 
-
+@login_required
 def petrolNozzleForm(request):
     if request.method == 'POST':
         openingReadingForNozzle1 = request.POST['openingReadingForNozzle1']
@@ -188,7 +194,7 @@ def petrolNozzleForm(request):
         return redirect(petrolNozzle)
     return render(request, 'petrol-nozzle-form.html')
 
-
+@login_required
 def petrolStockForm(request):
     if request.method == 'POST':
         openingStock = request.POST['openStock']
@@ -209,7 +215,7 @@ def petrolStockForm(request):
         return redirect(petrolStock)
     return render(request, 'petrol-stock-form.html',{})
 
-
+@login_required
 def petrolDensityForm(request):
     if request.method == 'POST':
         morningObservedHydroDensity = request.POST['morningObservedHydroDensity']
@@ -241,7 +247,7 @@ def petrolDensityForm(request):
         return redirect(petrolDensity)
     return render(request, 'petrol-density-form.html')
 
-
+@login_required
 def get_dta(request):
     dates = []
     totalAmount = []
@@ -254,7 +260,7 @@ def get_dta(request):
         "labels": dates,   
     }
     return JsonResponse(data)
-
+@login_required
 def getDieselProfit(request):
     date = []
     totalAmount= []
@@ -262,17 +268,24 @@ def getDieselProfit(request):
     for datas in diesel:
         date.append(datas.date)
         totalAmount.append(datas.totalAmount)
+        totalAmount.append(datas.totalAmount)
     data = {
         "date":date,
         "amount":totalAmount,
     }
     return JsonResponse(data)
+@login_required
 def getPetrolSale(request):
     month = []
     totalSales = []
     petrolSale = PetrolNozzle.objects.all()
     for alls in petrolSale:
+        #print(petrolSale.values())
         month.append(alls.date)
+        # monts = str(month)
+        # year, month, date = (monts.split('-'));
+        # print(month)
+        # assert isinstance(alls, object)
         totalSales.append(alls.totalMeterSale)
     data = {
         'month':month,

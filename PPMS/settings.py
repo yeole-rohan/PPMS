@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'PPMS_backend'
+    'PPMS_backend',
+    'social_django',
     
 ]
 
@@ -71,7 +72,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'PPMS.wsgi.application'
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '154065441163-aesqeufe5aernoj6405e0k3to1ed5mt5.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'kL4-kWWmf2Aos_yYRZM4eFTx'
+SECRET_AUTH_URL_NAMESPACE = 'social'
+LOGIN_URL = '/auth/login/google-oauth2/'
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases

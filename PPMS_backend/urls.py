@@ -1,10 +1,17 @@
+
+from django.conf import settings
+from django.contrib.auth import logout
 from django.urls import path, include
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LogoutView
 from . import views
 
+
 urlpatterns = [
-    path('', views.home, name="home"),
-    path('login/',LoginView.as_view(), name='login'),
+    path('',include('social_django.urls', namespace='social')),
+    path('logout/', LogoutView.as_view(next_page= settings.LOGOUT_REDIRECT_URL), name= 'logout'),
+    # path('login/',LoginView.as_view(), name='login'),
+    path('', views.home, name='home'),
+
     path('account/', views.accountForm, name="account"),
     path('account-form/', views.account, name="account-form"),
     path('diesel/', views.dieselStock, name="diesel"),
@@ -22,5 +29,4 @@ urlpatterns = [
     path('api/res/petrol-profit', views.get_dta ,name="api-data"),
     path('api/res/diesel-profit', views.getDieselProfit ,name="api-datas"),
     path('api/res/petrol-month-sale', views.getPetrolSale, name="petrol-sale")
-
 ]

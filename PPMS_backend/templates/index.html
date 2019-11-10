@@ -2,30 +2,25 @@
 {% load static %}
 
 {% block content %}
-<div class="head-holder">
-    <h2>Hello I welcome you, on this portal</h2>
-</div>
-<div class="outer">
-    <div class="row">
-        <div class="col-md-6 col-sm-6">
-            <canvas id="myChart1" width="400" height="350"></canvas>
-        </div>
-        <div class="col-md-6 col-sm-6">
-            <canvas id="myChart" width="400" height="350"></canvas>
-        </div>
+    <div class="head-holder">
+        <h2>Hello {{ user.username }} welcome you, on this portal</h2>
     </div>
-    <div class="row">
-        <div class="col-md-6 col-sm-6">
+    <div class="outer">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <canvas id="myChart1" width="400" height="350"></canvas>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <canvas id="myChart" width="400" height="350"></canvas>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-6 col-sm-6">
 
-            <canvas id="lineChart"></canvas>
+                <canvas id="lineChart"></canvas>
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
-<script>
-    petrolAPI();
-    petrolAPI();
-    mothAPi();
-</script>
 
 
