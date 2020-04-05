@@ -1,9 +1,9 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404,HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User as user
 from django.shortcuts import get_object_or_404
-from .models import Account, DieselStock, DieselNozzle, DieselDensity, PetrolDensity, PetrolNozzle, PetrolStock
+from . models import Account, DieselStock, DieselNozzle, DieselDensity, PetrolDensity, PetrolNozzle, PetrolStock
 
 
 # from datetime import datetime
@@ -30,17 +30,13 @@ def home(request):
 
 @login_required
 def accountForm(request):
-    student_list = Account.objects.all()
-    return render(request, 'account.html', {'account': student_list})
-
-@login_required
-def account(request):
     if request.method == 'POST':
         invoiceNumber = request.POST['invoiceNumber']
         petrolQuantity = request.POST['petrolQuantity']
         dieselQuantity = request.POST['dieselQuantity']
         lubricantQuantity = request.POST['lubricantQuantity']
         invoiceAount = request.POST['invoiceAount']
+        payNumber = request.POST['payNumber']
         payNumber = request.POST['payNumber']
         paymentDate = request.POST['paymentDate']
         amountPaid = request.POST['amountPaid']
@@ -52,8 +48,20 @@ def account(request):
                           invoiceAmount=invoiceAount, cheque_demand_number=payNumber, paymentDate=paymentDate,
                           amountPaid=amountPaid, comment=comment, shortExcess=shortExcess)
         account.save()
-        return redirect(accountForm)
-    return render(request, 'account-form.html')
+        return redirect(account)
+
+    return render(request,'account-form.html' )
+
+@login_required
+def account(request):
+    student_list = Account.objects.all()
+    print("{}".format(student_list))
+    return render(request,'account.html', {'student_list': student_list})
+
+@login_required
+def get_current_log_in_user(request):
+    current_user = request.user.id
+    print(current_user)
 
 
 # Diesel Views Handle over here
@@ -160,7 +168,9 @@ def petrolDensity(request):
 
 @login_required
 def petrolNozzle(request):
-    nozzle = PetrolNozzle.objects.all()
+    id = request.user.id
+    print(id)
+    nozzle = PetrolNozzle.objects.filter()
     return render(request, 'petrol-nozzle.html', {'nozzle': nozzle})
 
 @login_required
@@ -170,6 +180,7 @@ def petrolStock(request):
 
 @login_required
 def petrolNozzleForm(request):
+    ids = request.user.id
     if request.method == 'POST':
         openingReadingForNozzle1 = request.POST['openingReadingForNozzle1']
         openingReadingForNozzle2 = request.POST['openingReadingForNozzle2']
@@ -191,6 +202,7 @@ def petrolNozzleForm(request):
                                   saleForNozzle4=saleForNozzle4, testing=testing, rate=rate, totalAmount=totalAmount,
                                   totalMeterSale=totalMeterSale)
         petrolData.save()
+        print("{}".format(petrolData))
         return redirect(petrolNozzle)
     return render(request, 'petrol-nozzle-form.html')
 
@@ -251,7 +263,8 @@ def petrolDensityForm(request):
 def get_dta(request):
     dates = []
     totalAmount = []
-    nozz = PetrolNozzle.objects.all()
+    id = request.user.id
+    nozz = PetrolNozzle.objects.filter(user_id = id)
     for dataset in nozz:
         dates.append(dataset.date)
         totalAmount.append(dataset.totalAmount)
@@ -264,7 +277,8 @@ def get_dta(request):
 def getDieselProfit(request):
     date = []
     totalAmount= []
-    diesel = DieselNozzle.objects.all()
+    id = request.user.id
+    diesel = DieselNozzle.objects.filter(user_id=id)
     for datas in diesel:
         date.append(datas.date)
         totalAmount.append(datas.totalAmount)
@@ -278,7 +292,8 @@ def getDieselProfit(request):
 def getPetrolSale(request):
     month = []
     totalSales = []
-    petrolSale = PetrolNozzle.objects.all()
+    id = request.user.id
+    petrolSale = PetrolNozzle.objects.filter(user_id =id)
     for alls in petrolSale:
         #print(petrolSale.values())
         month.append(alls.date)

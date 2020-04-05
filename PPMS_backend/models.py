@@ -1,8 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
+DEFAULT = 1
 
 class Account(models.Model):
+    # user = models.ForeignKey(User,on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
     invoiceNumber = models.IntegerField(unique_for_date=True)
     petrolQuantity = models.IntegerField(blank=True)
@@ -92,7 +95,7 @@ class PetrolDensity(models.Model):
         return '%s' % self.date
 
 class PetrolNozzle(models.Model):
-    date = models.DateField(auto_now_add=True)
+    date = models.DateField(auto_now_add=True,null=False,blank=False,verbose_name="Should n0t be null")
     openingReadingForNozzle1 = models.FloatField(null=False, blank=False)
     openingReadingForNozzle2 = models.FloatField(null=False, blank=False)
     openingReadingForNozzle3 = models.FloatField(null=False, blank=False)
@@ -107,7 +110,7 @@ class PetrolNozzle(models.Model):
     totalAmount = models.FloatField(default=0)
 
     def __str__(self):
-        return '%s' % self.date
+        return '{}'.format(self.date)
 
 class PetrolStock(models.Model):
     date = models.DateField(auto_now_add=True)
@@ -123,4 +126,4 @@ class PetrolStock(models.Model):
     waterLtrs = models.FloatField(default=0)
 
     def __str__(self):
-        return '%s' % self.date
+        return '{} '.format(self.date)
